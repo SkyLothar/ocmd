@@ -36,5 +36,6 @@ def ocp(conn, dest, src, recursive):
                 remote_name = fp
             else:
                 remote_name = os.path.join(dest.dest, fp.lstrip("/"))
+            remote_name = os.path.normpath(remote_name)
             logger.info("uploding [%s] => [%s]", fp, remote_name)
             conn.upload(remote_name, f)

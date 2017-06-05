@@ -25,8 +25,10 @@ def ocp(conn, dest, src, recursive):
                 )
             else:
                 errors.append(fp)
+        else:
+            files.append(fp)
     if errors:
-        logger.error(u"{0} are folders".format(errors.join(", ")))
+        logger.error(u"{0} are folders".format(", ".join(errors)))
         raise ValueError(errors)
     for fp in files:
         with open(fp, "rb") as f:
